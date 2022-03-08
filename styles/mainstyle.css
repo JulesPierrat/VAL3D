@@ -1,0 +1,686 @@
+/*
+
+
+COULEUR:
+BLEU VM: #009EDF
+BLEU CLAIR: #99CCE1;
+
+
+*/
+
+
+/*     POLICES     */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+h1{
+	font-family: Ubuntu;
+	color: rgba(50,50,50,1);
+	font-size: 25px;
+	text-align: center;
+	margin: auto;
+}
+
+h2{
+	font-family: Ubuntu;
+	color: white;
+	font-size: 20px;
+}
+
+p{
+	font-family: Ubuntu;
+	color: rgba(50,50,50,1);
+	font-size: 15px;
+}
+
+.cesium-viewer-bottom{
+	display:none;
+}
+
+/*CONFIG GENERALE*/
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #009EDF;
+	width:100vw;
+	height:100vh;
+}
+
+#header{
+	width:100vw;
+	height:50px;
+	background-color: #009EDF;
+	display: flex;
+}
+
+#main{
+	height: calc(100% - 50px);
+	width: 100%;
+	display:flex;
+}
+
+#menus{
+	width:60px;
+	height: 100%;
+	background-color: rgba(100,100,100,1);
+}
+
+#cesiumContainer{
+	width: calc(100% - 60px);
+	height: 100%;
+	background:transparent;
+}
+
+#loadingPage{
+	position: absolute;
+	left:0;
+	top:0;
+	display:flex;
+	background-color: #009EDF;
+	width:100vw;
+	height:100vh;
+	z-index:1000;
+	transition: 2s;
+}
+
+/************************************ HEADER **************************************/
+
+#connection{
+	margin-left: auto;
+	margin-right: 0;
+	height:100%;
+	display: flex;
+	align-content: right;
+}
+
+#connection_label{
+	color:white;
+	margin:auto;
+}
+
+#connection_button{
+	background-color:#009EDF;
+	width:50px;
+	height: 100%;
+	outline:none;
+	border:none;
+	display:flex;
+	margin-left: 10px;
+}
+
+#connection_button:hover{
+	background-color: white;
+	cursor: pointer;
+}
+
+#connection_button:focus{
+	background-color: white;
+}
+
+#modal_connection{
+	position: absolute;
+	right: 10px;
+	top: 60px;
+	height: auto;
+	width: 350px;
+	background-color: white;
+	border-radius: 15px;
+	box-sizing: border-box;
+	padding: 15px;
+}
+
+
+.input_login{
+	box-sizing: border-box;
+	width: 75%;
+	padding-left: 25px;
+	height: 50px;
+	border-radius:25px;
+	border: 2px solid rgba(100,100,100,1);
+	margin-bottom: 10px;
+	transition:0.25s;
+	outline:none;
+}
+
+.input_login:hover{
+	border: 2px solid #009EDF;
+	cursor:pointer;
+}
+
+.input_login:focus{
+	border: 2px solid #009EDF;
+	width: 100%;
+	cursor:pointer;
+}
+
+#login_button{
+	width: 75%;
+	height: 50px;
+	box-sizing: border-box;
+	border: 2px solid #009EDF;
+	outline:none;
+	margin: auto;
+	margin-top:10px;
+	border-radius:25px;
+	transition:0.25s;
+	background-color:white;
+}
+
+#login_button:hover{
+	cursor:pointer;
+	background-color:#009EDF;
+}
+
+#login_button:focus{
+	background-color: #009EDF;
+}
+
+#logout_button{
+	width: 75%;
+	height: 50px;
+	box-sizing: border-box;
+	border: 2px solid red;
+	outline:none;
+	margin: auto;
+	margin-top:10px;
+	border-radius:25px;
+	transition:0.25s;
+	background-color:white;
+}
+
+#logout_button:hover{
+	cursor:pointer;
+	background-color:red;
+}
+
+#logout_button:focus{
+	background-color: red;
+}
+
+/**************************************MENUS***************************************/
+.menus_buttons{
+	height:60px;
+	width:60px;
+	outline:none;
+	border:none;
+	background:none;
+	display:flex;
+}
+
+.menus_buttons:hover{
+	cursor:pointer;
+	background-color: rgba(180,180,180,1);
+}
+
+.menus_buttons:focus{
+	background-color: rgba(180,180,180,1);
+}
+
+.menus_buttons img{
+	margin: auto;
+}
+
+
+/**************************************MENU******************************************/
+#menu{
+	height:calc(100% - 50px);
+	width:0px;
+	position: absolute;
+	top:50px;
+	left:60px;
+	z-index:100;
+	transition: 0.5s;
+	display:flex;
+	background-color: rgba( 180, 180, 180, 1 );
+}
+
+#menu_container{
+	width: calc(100% - 5px);
+	height: 100%;
+	background:none;
+	overflow: auto;
+}
+
+#menu_touchbar{
+	width:5px;
+	height:100%;
+	background-color: rgba(0,0,0,0.1);
+}
+
+#menu_touchbar:hover{
+	cursor: col-resize;
+}
+
+
+/******************************* MENU LAYERS ***********************/
+#button_switch_mlayers:hover{
+	cursor:pointer;
+}
+
+.menu_group{
+	width:100%;
+	display:flex;
+	height:50px;
+	background-color: rgba(100,100,100,1);
+	outline: none;
+	border: none;
+}
+
+.menu_group h2{
+	color: white;
+	margin: auto;
+}
+
+.menu_group:hover{
+	background-color: #009EDF;
+	cursor: pointer;
+}
+
+.menu_group_container{
+	width:100%;
+	transition: 0.25s;
+}
+
+.layer_in_menu{
+	width:100%;
+	display:flex;
+	height:30px;
+	background-color: rgba(0,0,0,0.1);
+	position: relative;
+}
+
+
+.layer_in_menu h2{
+	color: white;
+	margin: auto;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+.layer_in_menu_cross{
+	position: absolute;
+	left: calc(100% - 30px);
+	width:30px;
+	height:30px;display:flex;
+	background-color: rgba(0,0,0,0.2);
+	outline:none;
+	border:none;
+}
+
+.layer_in_menu_cross h2{
+	color: white;
+	font-size:15px;
+	margin: auto;
+}
+
+.layer_in_menu_cross:hover{
+	cursor:pointer;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.visible_layer{
+	height:50px;
+	background-color:rgba(100,100,100,1);
+	width:100%;
+	margin:auto;
+	display: flex;
+}
+
+.visible_layer_name{
+	height:50px;
+	width:calc(100% - 100px);
+	display: flex;
+}
+
+.visible_layer_name h2{
+	margin: auto;
+	margin-left:20px;
+	color: white;
+	font-size:15px;
+}
+
+.visible_layer_loc, .visible_layer_del{
+	width:50px;
+	height:50px;
+	display:flex;
+}
+
+.visible_layer_loc:hover, .visible_layer_del:hover{
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+
+/******************************************* MENU STYLES **********************************/
+
+.select-box {
+	cursor: pointer;
+	position : relative;
+	margin: 10px auto;
+	width: 100%;
+  }
+  
+  .select,
+  .label {
+	color: #414141;
+	display: block;
+	font: 400 17px/2em 'Source Sans Pro', sans-serif;
+  }
+  
+  .select {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	padding: 5px 0;
+	height: 40px;
+	opacity: 0;
+	background: none transparent;
+	border: 0 none;
+  }
+  .select-box1 {
+	background: #ececec;
+  }
+  
+  .label {
+	position: relative;
+	padding: 5px 10px;
+	cursor: pointer;
+  }
+  .open .label::after {
+	 content: "▲";
+  }
+  .label::after {
+	content: "▼";
+	font-size: 12px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 5px 15px;
+	border-left: 5px solid #fff;
+  }
+
+  .opacity_selector{
+	  width: 100%;
+  }
+
+  .attribute_style_button{
+	  width:100%;
+	  height:50px;
+	  outline:none;
+	  background-color: rgba(100,100,100,1);
+	  border: none;
+	  color: white;
+	  text-align: left;
+	  padding-left: 10px;
+	  font-family: Ubuntu;
+	  transition: 0.25s;
+  }
+
+  .attribute_style_button:hover{
+	  background-color: #009EDF;
+	  cursor: pointer;
+  }
+
+  .attribute_style_button:focus{
+	  background-color: #009EDF;
+  }
+
+  .default_style{
+	width:100%;
+	height:50px;
+	outline:none;
+	background-color: rgba(236,236,236,1);
+	border: none;
+	color: black;
+	font-family: Ubuntu;
+	transition: 0.25s;
+  }
+
+  .default_style:hover{
+	background-color: #009EDF;
+	cursor: pointer;
+  }
+
+  .default_style:focus{
+	background-color: #009EDF;
+  }
+
+  .attribute_style{
+	width:100%;
+	height:50px;
+	outline:none;
+	background-color: rgba(236,236,236,1);
+	border: none;
+	color: black;
+	font-family: Ubuntu;
+	transition: 0.25s;
+  }
+
+  .attribute_style:hover{
+	background-color: #009EDF;
+	cursor: pointer;
+  }
+
+  .attribute_style:focus{
+	background-color: #009EDF;
+  }
+
+
+  .position_style{
+	width:100%;
+	height:50px;
+	outline:none;
+	background-color: rgba(236,236,236,1);
+	border: none;
+	color: black;
+	font-family: Ubuntu;
+	transition: 0.25s;
+  }
+
+  .position_style:hover{
+	background-color: #009EDF;
+	cursor: pointer;
+  }
+
+  .position_style:focus{
+	background-color: #009EDF;
+  }
+
+
+  /********************************************* MENU GEOCODER ***********************************************/
+  .geocoder_input{
+	  width: calc(100% - 22px);
+	  height: 40px;
+	  border:none;
+	  outline:none;
+	  background-color: white;
+	  color: black;
+	  font-family: Ubuntu;
+	  padding-left: 10px;
+	  padding-right :10px;
+	  border: solid 1px white;
+	  transition: 0.25s;
+  }
+
+  .geocoder_input:hover{
+	border: solid 1px #009EDF;
+	cursor:pointer;
+  }
+
+  .geocoder_input:focus{
+	border: solid 1px #009EDF;
+}
+
+#search_geocoder_button{
+	width:100%;
+	height:40px;
+	background-color: rgba(100,100,100,1);
+	border: none;
+	outline: none;
+	transition: 0.25s;
+}
+
+#search_geocoder_button h3{
+	color: white;
+	font-family: Ubuntu;
+}
+
+#search_geocoder_button:hover{
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+#search_geocoder_button:focus{
+	background-color: #009EDF;
+}
+
+.search_marker_container_fly {
+	width: calc(100% - 50px);
+	height:50px;
+	display:flex;
+	background-color:#646464;
+	transition: 0.25;
+}
+
+.search_marker_container_fly h3 {
+	color:white;
+	margin: auto;
+	font-family: Ubuntu;
+}
+
+.search_marker_container_fly:hover {
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+.search_marker_container_fly:focus {
+	background-color: #009EDF;
+}
+
+.search_marker_container_del {
+	width:50px;
+	height:50px;
+	display:flex;
+	background-color:#646464;
+	transition: 0.25;
+}
+
+.search_marker_container_del h3 {
+	color:white;
+	margin: auto;
+	font-family: Ubuntu;
+}
+
+.search_marker_container_del:hover {
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+.search_marker_container_del:focus {
+	background-color: #009EDF;
+}
+
+/*********************************************** POI MENU *************************************************/
+
+.poi_liste_button{
+	width:100%;
+	height:50px;
+	display:flex;
+	background-color:#646464;
+	transition: 0.25;
+	outline: none;
+	border: none;
+}
+
+.poi_liste_button h3 {
+	color:white;
+	margin: auto;
+	font-family: Ubuntu;
+}
+
+.poi_liste_button:hover {
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+.poi_liste_button:focus {
+	background-color: #009EDF;
+}
+
+
+/************************* MODAL POI ****************************/
+#modal_POI{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.6);
+}
+
+#modal_POI_container{
+	width: 800px;
+	max-height: 80vh;
+	background-color: rgba(200,200,200,1);
+	margin:auto;
+	overflow: auto;
+	padding:20px;
+}
+
+
+
+/**************************** MODULE ************************/
+.module_button{
+	width:100%;
+	height:50px;
+	display:flex;
+	background-color:#646464;
+	transition: 0.25;
+	outline: none;
+	border: none;
+}
+
+.module_button h3 {
+	color:white;
+	margin: auto;
+	font-family: Ubuntu;
+}
+
+.module_button:hover {
+	cursor:pointer;
+	background-color: #009EDF;
+}
+
+.module_button:focus {
+	background-color: #009EDF;
+}
+
+
+
+/************************* BIM PROJECT ************************/
+.bim_container{
+	box-sizing: border-box;
+	width: 100%;
+	height: 120px;
+	display: flex;
+	background-color: #646464;
+	margin-bottom: 10px;
+	outline:none;
+	border:none;
+}
+
+.bim_container:hover{
+	cursor: pointer;
+	background-color: #009EDF;
+}
+
+.bim_container:focus{
+	background-color: #009EDF;
+}
+
+
+.bim_container_img{
+	height:100%;
+	width:120px;
+}

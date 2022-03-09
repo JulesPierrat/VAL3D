@@ -263,7 +263,7 @@ PARAMETRAGE META :
 {
     "WMTS": {
         "layer": "CADASTRALPARCELS.PARCELLAIRE_EXPRESS",
-        "format":"image/png"
+        "format":"image/png",
     },
     style: {
         "opacity": 0.8
@@ -275,7 +275,7 @@ Ce qui nous donne :
 {
     "WMTS": {
         "layer": "CADASTRALPARCELS.PARCELLAIRE_EXPRESS",
-        "format":"image/png"
+        "format":"image/png",
     },
     style: {
         "opacity": 0.8
